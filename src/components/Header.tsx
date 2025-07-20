@@ -103,7 +103,7 @@ export default function Header() {
             <input 
               type="submit"
               value="Buscar Recetas"
-              className=" cursor-pointer text-white font-extrabold bg-slate-800 hover:bg-slate-500 rounded-lg p-3 uppercase transition delay-120 duration-300 w-full"
+              className=" cursor-pointer text-white font-extrabold bg-slate-800 hover:bg-slate-600 rounded-lg p-3 uppercase transition delay-120 duration-300 w-full"
             />
           </form>
         )}
