@@ -8,6 +8,9 @@ export default function Modal() {
   const modal = useAppStore((state) => state.modal)
   const closeModal = useAppStore((state) => state.closeModal)
   const selectedRecipe = useAppStore((state) => state.selectedRecipe)
+  const handleClickFavorite = useAppStore((state) => state.handleClickFavorite)
+  const favorites = useAppStore((state) => state.favorites)
+  const isFavorite = favorites.some(fav => fav.idDrink === selectedRecipe.idDrink);
 
   const [selectedLanguage, setSelectedLanguage] = useState<'EN' | 'ES' | 'IT'>('EN');
 
@@ -95,6 +98,15 @@ export default function Modal() {
                         : selectedRecipe.strInstructions }
                       </p>
                     </section>
+                  </div>
+                  <div className=' mt-5'>
+                    <button
+                      type="button"
+                      className={`cursor-pointer text-white font-extrabold w-full rounded-lg p-3 uppercase transition delay-120 duration-300 ${isFavorite ? "bg-slate-800 hover:bg-slate-600" : "bg-orange-400 hover:bg-orange-500"}  `}
+                      onClick={() => handleClickFavorite(selectedRecipe)}
+                    >
+                      {isFavorite ? 'Eliminar de Favoritos' : 'Guardar en Favoritos'}
+                    </button> 
                   </div>
                 </DialogPanel>
               </TransitionChild>

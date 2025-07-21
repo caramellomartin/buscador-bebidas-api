@@ -9,14 +9,12 @@ export default function DrinkCard({drink} : DrinkCardProps) {
   const selectRecipe = useAppStore((state) => state.selectRecipe)
 
   return (
-    <div className=" shadow-lg">
-      <div className=" overflow-hidden">
-        <img 
-          src={drink.strDrinkThumb} 
-          alt={`Imagen de ${drink.strDrink}`}
-          className=" hover:scale-115 transition-transform delay-100 duration-300 hover:rotate-1"
-        />
-      </div>
+    <div className=" rounded-lg shadow-lg hover:scale-110 transition-transform delay-100 duration-300">
+      <img 
+        src={drink.strDrinkThumb} 
+        alt={`Imagen de ${drink.strDrink}`}
+        className=" rounded-t-lg"
+      />
       <div className=" p-5">
         <h2 className=" text-2xl truncate font-black">{drink.strDrink}</h2>
         <button
