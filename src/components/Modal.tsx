@@ -1,12 +1,15 @@
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react';
-import { Fragment, type JSX } from 'react';
+import { Fragment, useState, type JSX } from 'react';
 import { useAppStore } from '../stores/useAppStore';
 import type { Recipe } from '../types';
+import LanguageSelector from './LanguageSelector';
 
 export default function Modal() {
   const modal = useAppStore((state) => state.modal)
   const closeModal = useAppStore((state) => state.closeModal)
   const selectedRecipe = useAppStore((state) => state.selectedRecipe)
+
+  const [selectedLanguage, setSelectedLanguage] = useState<'EN' | 'ES' | 'IT'>('EN');
 
   const renderIngredients = () => {
     const ingredients: JSX.Element[] = []
@@ -74,8 +77,23 @@ export default function Modal() {
                       {renderIngredients()}
                     </section>
                     <section>
-                      <h2 className=' text-2xl font-bold mb-2'>Instrucciones</h2>
-                      <p className=' text-lg leading-relaxed font-semibold'>{selectedRecipe.strInstructions}</p>
+                      <div className=' flex flex-col sm:flex-row justify-between mb-2'>                      
+                        <h2 className=' text-2xl font-bold mb-2'>Instrucciones</h2>
+                        <LanguageSelector
+                          selected={selectedLanguage}
+                          onChange={setSelectedLanguage}
+                          availableInstructions={{
+                            strInstructions: selectedRecipe.strInstructions,
+                            strInstructionsES: selectedRecipe.strInstructionsES,
+                            strInstructionsIT: selectedRecipe.strInstructionsIT,
+                          }}
+                        />
+                      </div>
+                      <p className=' text-lg leading-relaxed font-semibold'>{selectedLanguage === 'ES' && selectedRecipe.strInstructionsES 
+                        ? selectedRecipe.strInstructionsES : selectedLanguage === 'IT' && selectedRecipe.strInstructionsIT 
+                        ? selectedRecipe.strInstructionsIT 
+                        : selectedRecipe.strInstructions }
+                      </p>
                     </section>
                   </div>
                 </DialogPanel>
