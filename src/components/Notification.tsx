@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
-import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
-import { XMarkIcon } from '@heroicons/react/20/solid'
+import CheckCircleIcon from '@heroicons/react/24/outline/CheckCircleIcon.js';
+import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon.js';
+import XMarkIcon from '@heroicons/react/20/solid/XMarkIcon.js';
 import { Transition } from '@headlessui/react'
 import { useAppStore } from '../stores/useAppStore'
 

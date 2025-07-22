@@ -32,7 +32,7 @@ export default function LanguageSelector({ selected, onChange, availableInstruct
             `}
             title={!isAvailable ? 'Traducción no disponible' : `Cambiar a ${lang.code}`}
           >
-            <img 
+            <img
               src={`https://flagcdn.com/w40/${lang.country}.png`} 
               alt={`Bandera de ${lang.code}`}
               className={` w-6 h-4 object-cover rounded-sm ${isSelected ? 'ring-2 ring-blue-400' : ''}`}
