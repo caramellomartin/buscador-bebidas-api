@@ -10,6 +10,7 @@ export default function Modal() {
   const selectedRecipe = useAppStore((state) => state.selectedRecipe)
   const handleClickFavorite = useAppStore((state) => state.handleClickFavorite)
   const favorites = useAppStore((state) => state.favorites)
+  const showNotification = useAppStore((state) => state.notification.show)
   const isFavorite = favorites.some(fav => fav.idDrink === selectedRecipe.idDrink);
 
   const [selectedLanguage, setSelectedLanguage] = useState<'EN' | 'ES' | 'IT'>('EN');
@@ -34,7 +35,7 @@ export default function Modal() {
   return (
     <>
       <Transition appear show={modal} as={Fragment}>
-        <Dialog as="div" className="relative z-50" onClose={closeModal}>
+        <Dialog as="div" className="relative z-50" onClose={() => {if(!showNotification) closeModal()}}>
           {/* Backdrop */}
           <TransitionChild
             as={Fragment}
