@@ -61,6 +61,12 @@ export default function Header() {
                 isActive ? ' text-orange-400 uppercase font-bold -translate-y-0.5 scale-105' : ' text-white uppercase font-bold transition delay-120 duration-300  hover:text-orange-400 hover:-translate-y-0.5 hover:scale-105'
               }
             >Favoritos</NavLink>
+            <NavLink 
+              to="/generate" 
+              className={({ isActive }) => 
+                isActive ? ' text-orange-400 uppercase font-bold -translate-y-0.5 scale-105' : ' text-white uppercase font-bold transition delay-120 duration-300  hover:text-orange-400 hover:-translate-y-0.5 hover:scale-105'
+              }
+            >Generar con IA</NavLink>
           </nav>
         </div>
         { isHome && (
@@ -77,7 +83,7 @@ export default function Header() {
                 type="text" 
                 id="ingredient"
                 name="ingredient"
-                className=" p-3 w-full rounded-lg focus:outline-none bg-white"
+                className=" p-3 w-full rounded-lg focus:outline-none bg-white placeholder:italic"
                 placeholder="Nombre o ingrediente. Ej. Vodka, Whisky, Café, etc."
                 onChange={handleChange}
                 value={searchFilters.ingredient}
