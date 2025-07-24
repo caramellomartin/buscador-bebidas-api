@@ -39,7 +39,7 @@ export const createNotificationSlice: StateCreator<NotificationSliceType & Favor
         }
       }))
       timeoutId = null
-    }, 5000);
+    }, 3000);
   },
   hideNotification: () => {
     if(timeoutId) {

@@ -1,7 +1,6 @@
 import { Fragment } from 'react'
 import CheckCircleIcon from '@heroicons/react/24/outline/CheckCircleIcon.js';
 import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon.js';
-import XMarkIcon from '@heroicons/react/20/solid/XMarkIcon.js';
 import { Transition } from '@headlessui/react'
 import { useAppStore } from '../stores/useAppStore'
 
@@ -12,7 +11,8 @@ export default function Notification() {
   return (
     <div
       aria-live="assertive"
-      className="pointer-events-none fixed inset-0 z-[999] flex items-end px-4 py-6 sm:items-start sm:p-6"
+      className="pointer-events-none cursor-pointer fixed inset-0 z-[999] flex items-end px-4 py-6 sm:items-start sm:p-6"
+      onClick={hideNotification}
     >
       <div className="flex w-full flex-col items-center space-y-4 sm:items-end">
         <Transition
@@ -37,17 +37,7 @@ export default function Notification() {
               <div className="ml-3 w-0 flex-1">
                 <p className="text-sm font-semibold text-gray-900">Notificación</p>
                 <p className="mt-1 text-sm text-gray-600 italic">{notification.text}</p>
-              </div>
-              <div className="ml-4 flex-shrink-0">
-                <button
-                  type="button"
-                  className=" cursor-pointer inline-flex rounded-md p-1 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  onClick={hideNotification}
-                >
-                  <span className="sr-only">Cerrar</span>
-                  <XMarkIcon className="h-5 w-5" aria-hidden="true" />
-                </button>
-              </div>
+              </div>              
             </div>            
           </div>
         </Transition>
